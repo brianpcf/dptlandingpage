@@ -1,3 +1,6 @@
+import { Mail, Calendar, Users, MessageSquare, FileText, PhoneCall, Database, List } from "lucide-react";
+import { ReactNode } from "react";
+
 export interface Tool {
   name: string;
   isPriority: boolean;
@@ -128,7 +131,7 @@ export const toolCategories: ToolCategory[] = [
 export interface Automation {
   title: string;
   description: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   iconBg: string;
   link: string;
   category: string;
@@ -136,7 +139,6 @@ export interface Automation {
 }
 
 export const automations: Automation[] = [
-  // Existing automations
   {
     title: "Email Response Triage",
     description: "Automatically analyze and route important customer emails to Slack and your CRM with AI-powered prioritization.",
@@ -208,16 +210,5 @@ export const automations: Automation[] = [
     link: "/agenda-ai",
     category: "Communication",
     tools: ["Slack", "HubSpot", "Notion"]
-  },
-  // New Sales & Lead Management Automations
-  {
-    title: "Smart Lead Qualification",
-    description: "AI-powered lead scoring and routing system that analyzes incoming leads and assigns them to the right sales rep.",
-    icon: <Users className="w-6 h-6 text-emerald-600" />,
-    iconBg: "bg-emerald-100",
-    link: "/smart-lead-qualification",
-    category: "Sales",
-    tools: ["Gmail", "HubSpot", "Slack"]
-  },
-  // ... Adding all other new automations with appropriate icons and categories
+  }
 ];
