@@ -23,7 +23,7 @@ export const toolCategories: ToolCategory[] = [
       { name: "HubSpot", isPriority: true },
       { name: "Pipedrive", isPriority: true },
       { name: "Zoho CRM", isPriority: false },
-      { name: "Monday.com", isPriority: true },
+      { name: "GoHighLevel", isPriority: true },
       { name: "ClickUp", isPriority: true }
     ]
   },
