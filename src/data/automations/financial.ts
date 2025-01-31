@@ -1,4 +1,4 @@
-import { DollarSign, Receipt, FileText, BarChart, Scanner } from "lucide-react";
+import { DollarSign, Receipt, FileText, BarChart, Scan } from "lucide-react";
 import { Automation } from "./types";
 
 export const financialAutomations: Automation[] = [
@@ -41,7 +41,7 @@ export const financialAutomations: Automation[] = [
   {
     title: "Receipt Processing Automation",
     description: "Extracts data from receipts and creates expense entries automatically",
-    icon: Scanner,
+    icon: Scan,
     iconBg: "bg-rose-100",
     link: "/receipt-processing",
     category: "Financial",
