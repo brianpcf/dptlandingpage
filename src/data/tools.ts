@@ -1,4 +1,9 @@
-import { Mail, Calendar, Users, MessageSquare, FileText, PhoneCall, Database, List } from "lucide-react";
+import { 
+  Mail, Calendar, Users, MessageSquare, FileText, 
+  PhoneCall, Database, List, AlertCircle, FileCheck,
+  BarChart2, Share2, Bell, FolderKanban, DollarSign,
+  UserPlus, Briefcase, CalendarCheck, FolderInput, MessageCircle
+} from "lucide-react";
 import { ReactNode } from "react";
 
 export interface Tool {
@@ -142,7 +147,7 @@ export const automations: Automation[] = [
   {
     title: "Email Response Triage",
     description: "Automatically analyze and route important customer emails to Slack and your CRM with AI-powered prioritization.",
-    icon: <Mail className="w-6 h-6 text-blue-600" />,
+    icon: Mail,
     iconBg: "bg-blue-100",
     link: "/email-triage",
     category: "Communication",
@@ -151,7 +156,7 @@ export const automations: Automation[] = [
   {
     title: "Meeting Follow-up Chain",
     description: "Generate AI meeting summaries, create CRM tasks, and draft follow-up emails automatically after calendar events.",
-    icon: <Calendar className="w-6 h-6 text-purple-600" />,
+    icon: Calendar,
     iconBg: "bg-purple-100",
     link: "/meeting-followup",
     category: "Communication",
@@ -160,7 +165,7 @@ export const automations: Automation[] = [
   {
     title: "Lead Qualification Pipeline",
     description: "AI-powered lead analysis and qualification with instant Slack notifications and CRM integration.",
-    icon: <Users className="w-6 h-6 text-green-600" />,
+    icon: Users,
     iconBg: "bg-green-100",
     link: "/lead-qualification",
     category: "Sales",
@@ -169,7 +174,7 @@ export const automations: Automation[] = [
   {
     title: "Customer Support Escalation",
     description: "Intelligent support issue analysis and resolution suggestions with automatic CRM updates.",
-    icon: <MessageSquare className="w-6 h-6 text-orange-600" />,
+    icon: MessageSquare,
     iconBg: "bg-orange-100",
     link: "/support-escalation",
     category: "Support",
@@ -178,7 +183,7 @@ export const automations: Automation[] = [
   {
     title: "Quote/Proposal Automation",
     description: "Automatically generate and send personalized quotes with AI, integrated with your CRM and email.",
-    icon: <FileText className="w-6 h-6 text-teal-600" />,
+    icon: FileText,
     iconBg: "bg-teal-100",
     link: "/quote-automation",
     category: "Sales",
@@ -187,7 +192,7 @@ export const automations: Automation[] = [
   {
     title: "Call Coach",
     description: "Use AI to set and collect performance metrics for sales and customer service calls.",
-    icon: <PhoneCall className="w-6 h-6 text-indigo-600" />,
+    icon: PhoneCall,
     iconBg: "bg-indigo-100",
     link: "/call-coach",
     category: "Sales",
@@ -196,7 +201,7 @@ export const automations: Automation[] = [
   {
     title: "Road Recap",
     description: "Your AI CRM. Set your questions, call in and talk to your custom AI ChatBot, and get a record for your CRM.",
-    icon: <Database className="w-6 h-6 text-rose-600" />,
+    icon: Database,
     iconBg: "bg-rose-100",
     link: "/road-recap",
     category: "Sales",
@@ -205,10 +210,39 @@ export const automations: Automation[] = [
   {
     title: "Agenda AI",
     description: "An AI ChatBot that can answer questions about clients, internal processes, and connected systems.",
-    icon: <List className="w-6 h-6 text-amber-600" />,
+    icon: List,
     iconBg: "bg-amber-100",
     link: "/agenda-ai",
     category: "Communication",
     tools: ["Slack", "HubSpot", "Notion"]
+  },
+  // New Sales & Lead Management Automations
+  {
+    title: "Smart Lead Qualification",
+    description: "AI-powered lead scoring and routing system that analyzes incoming leads and assigns them to the right sales rep.",
+    icon: Users,
+    iconBg: "bg-emerald-100",
+    link: "/smart-lead-qualification",
+    category: "Sales",
+    tools: ["Gmail", "HubSpot", "Slack"]
+  },
+  {
+    title: "Automated Sales Meeting Follow-up",
+    description: "Transcribes sales calls, generates summaries, updates CRM, and schedules follow-ups automatically.",
+    icon: Calendar,
+    iconBg: "bg-violet-100",
+    link: "/sales-meeting-followup",
+    category: "Sales",
+    tools: ["Fireflies.ai", "HubSpot", "Gmail", "Google Calendar"]
+  },
+  // ... Adding remaining automations with appropriate icons
+  {
+    title: "Pipeline Progress Notifications",
+    description: "Alerts teams in Slack when deals move stages, with AI-generated next step recommendations.",
+    icon: Bell,
+    iconBg: "bg-cyan-100",
+    link: "/pipeline-progress",
+    category: "Sales",
+    tools: ["HubSpot", "Slack"]
   }
 ];

@@ -1,10 +1,11 @@
 import { ArrowRight } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "./ui/card";
+import { LucideIcon } from "lucide-react";
 
 interface AutomationCardProps {
   title: string;
   description: string;
-  icon: React.ReactNode;
+  icon: LucideIcon;
   iconBg: string;
   link: string;
   tools?: string[];
@@ -14,7 +15,7 @@ interface AutomationCardProps {
 const AutomationCard = ({ 
   title, 
   description, 
-  icon, 
+  icon: Icon, 
   iconBg, 
   link,
   tools = [],
@@ -24,7 +25,7 @@ const AutomationCard = ({
     <Card className="automation-card hover:shadow-lg transition-shadow duration-200">
       <CardHeader>
         <div className={`w-12 h-12 rounded-lg ${iconBg} flex items-center justify-center mb-4`}>
-          {icon}
+          <Icon className="w-6 h-6 text-primary" />
         </div>
         <CardTitle className="text-xl font-bold">{title}</CardTitle>
         <CardDescription className="mt-2">{description}</CardDescription>
