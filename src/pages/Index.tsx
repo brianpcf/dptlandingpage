@@ -1,7 +1,6 @@
 import Hero from "@/components/Hero";
 import AutomationCard from "@/components/AutomationCard";
 import FeaturedAutomations from "@/components/FeaturedAutomations";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toolCategories } from "@/data/toolCategories";
 import { useState } from "react";
@@ -27,13 +26,19 @@ const Index = () => {
     );
   };
 
+  // Updated filtering logic
   const filteredAutomations = automations.filter((automation) => {
     if (selectedTools.length === 0) return true;
     return automation.tools.some(tool => selectedTools.includes(tool));
   });
 
   const featuredAutomations = automations.slice(0, 3);
-  const remainingAutomations = filteredAutomations.slice(3);
+  const remainingAutomations = selectedTools.length > 0 
+    ? filteredAutomations.filter(automation => !featuredAutomations.includes(automation))
+    : filteredAutomations.slice(3);
+
+  console.log('Selected Tools:', selectedTools);
+  console.log('Filtered Automations:', filteredAutomations);
 
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
