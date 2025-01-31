@@ -1,4 +1,4 @@
-import { Mail, Calendar, Users, MessageSquare, FileText } from "lucide-react";
+import { Mail, Calendar, Users, MessageSquare, FileText, PhoneCall, Database, List } from "lucide-react";
 import Hero from "@/components/Hero";
 import AutomationCard from "@/components/AutomationCard";
 
@@ -37,6 +37,27 @@ const automations = [
     icon: <FileText className="w-6 h-6 text-teal-600" />,
     iconBg: "bg-teal-100",
     link: "/quote-automation"
+  },
+  {
+    title: "Call Coach",
+    description: "Use AI to set and collect performance metrics for sales and customer service calls.",
+    icon: <PhoneCall className="w-6 h-6 text-indigo-600" />,
+    iconBg: "bg-indigo-100",
+    link: "/call-coach"
+  },
+  {
+    title: "Road Recap",
+    description: "Your AI CRM. Set your questions, call in and talk to your custom AI ChatBot, and get a record for your CRM.",
+    icon: <Database className="w-6 h-6 text-rose-600" />,
+    iconBg: "bg-rose-100",
+    link: "/road-recap"
+  },
+  {
+    title: "Agenda AI",
+    description: "An AI ChatBot that can answer questions about clients, internal processes, and your connected systems.",
+    icon: <List className="w-6 h-6 text-amber-600" />,
+    iconBg: "bg-amber-100",
+    link: "/agenda-ai"
   }
 ];
 
