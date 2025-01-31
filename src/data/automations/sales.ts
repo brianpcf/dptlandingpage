@@ -1,19 +1,91 @@
-import { Users, Calendar, Bell, FileText, Clock } from "lucide-react";
+import { PhoneCall, Users, Calendar, Bell, FileText } from "lucide-react";
 import { Automation } from "./types";
 
 export const salesAutomations: Automation[] = [
   {
+    title: "Call Coach",
+    description: "Use AI to set and collect performance metrics for sales and customer service calls.",
+    icon: PhoneCall,
+    iconBg: "bg-indigo-100",
+    link: "/call-coach",
+    category: "Sales",
+    tools: ["Gong.io", "HubSpot", "Slack"]
+  },
+  {
+    title: "Road Recap",
+    description: "Your AI CRM. Set your questions, call in and talk to your custom AI ChatBot, and get a record for your CRM.",
+    icon: Users,
+    iconBg: "bg-rose-100",
+    link: "/road-recap",
+    category: "Sales",
+    tools: ["HubSpot", "Fireflies.ai", "Slack"]
+  },
+  {
+    title: "Lead Qualification Pipeline",
+    description: "AI-powered lead analysis and qualification with instant Slack notifications and CRM integration.",
+    icon: Users,
+    iconBg: "bg-green-100",
+    link: "/lead-qualification",
+    category: "Sales",
+    tools: ["Gmail", "HubSpot", "Slack"]
+  },
+  {
+    title: "Customer Support Escalation",
+    description: "Intelligent support issue analysis and resolution suggestions with automatic CRM updates.",
+    icon: Calendar,
+    iconBg: "bg-orange-100",
+    link: "/support-escalation",
+    category: "Support",
+    tools: ["Zendesk", "Slack", "HubSpot"]
+  },
+  {
+    title: "Quote/Proposal Automation",
+    description: "Automatically generate and send personalized quotes with AI, integrated with your CRM and email.",
+    icon: FileText,
+    iconBg: "bg-teal-100",
+    link: "/quote-automation",
+    category: "Sales",
+    tools: ["HubSpot", "Gmail", "Slack"]
+  },
+  {
+    title: "Call Coach",
+    description: "Use AI to set and collect performance metrics for sales and customer service calls.",
+    icon: PhoneCall,
+    iconBg: "bg-indigo-100",
+    link: "/call-coach",
+    category: "Sales",
+    tools: ["Gong.io", "HubSpot", "Slack"]
+  },
+  {
+    title: "Road Recap",
+    description: "Your AI CRM. Set your questions, call in and talk to your custom AI ChatBot, and get a record for your CRM.",
+    icon: Users,
+    iconBg: "bg-rose-100",
+    link: "/road-recap",
+    category: "Sales",
+    tools: ["HubSpot", "Fireflies.ai", "Slack"]
+  },
+  {
+    title: "Agenda AI",
+    description: "An AI ChatBot that can answer questions about clients, internal processes, and connected systems.",
+    icon: Users,
+    iconBg: "bg-amber-100",
+    link: "/agenda-ai",
+    category: "Communication",
+    tools: ["Slack", "HubSpot", "Notion"]
+  },
+  {
     title: "Smart Lead Qualification",
-    description: "AI-powered lead scoring and routing system that analyzes incoming leads and assigns them to the right sales rep",
+    description: "AI-powered lead scoring and routing system that analyzes incoming leads and assigns them to the right sales rep.",
     icon: Users,
     iconBg: "bg-emerald-100",
     link: "/smart-lead-qualification",
     category: "Sales",
-    tools: ["Gmail", "Claude.ai", "HubSpot", "Slack"]
+    tools: ["Gmail", "HubSpot", "Slack"]
   },
   {
     title: "Automated Sales Meeting Follow-up",
-    description: "Transcribes sales calls, generates summaries, updates CRM, and schedules follow-ups automatically",
+    description: "Transcribes sales calls, generates summaries, updates CRM, and schedules follow-ups automatically.",
     icon: Calendar,
     iconBg: "bg-violet-100",
     link: "/sales-meeting-followup",
@@ -22,29 +94,11 @@ export const salesAutomations: Automation[] = [
   },
   {
     title: "Pipeline Progress Notifications",
-    description: "Alerts teams in Slack when deals move stages, with AI-generated next step recommendations",
+    description: "Alerts teams in Slack when deals move stages, with AI-generated next step recommendations.",
     icon: Bell,
     iconBg: "bg-cyan-100",
     link: "/pipeline-progress",
     category: "Sales",
-    tools: ["HubSpot", "Slack", "Claude.ai"]
-  },
-  {
-    title: "Intelligent Quote Generator",
-    description: "Creates customized quotes based on CRM data and sends for internal approval before client delivery",
-    icon: FileText,
-    iconBg: "bg-indigo-100",
-    link: "/quote-generator",
-    category: "Sales",
-    tools: ["HubSpot", "Slack", "Gmail", "Claude.ai"]
-  },
-  {
-    title: "Lead Response Accelerator",
-    description: "Instant personalized responses to form submissions with intelligent follow-up scheduling",
-    icon: Clock,
-    iconBg: "bg-rose-100",
-    link: "/lead-response",
-    category: "Sales",
-    tools: ["Typeform", "Gmail", "Calendly", "ChatGPT"]
+    tools: ["HubSpot", "Slack"]
   }
 ];
