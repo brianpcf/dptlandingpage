@@ -1,10 +1,9 @@
-import { Mail, Calendar, Users, MessageSquare, FileText, PhoneCall, Database, List } from "lucide-react";
 import Hero from "@/components/Hero";
 import AutomationCard from "@/components/AutomationCard";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { toolCategories } from "@/data/tools";
+import { toolCategories } from "@/data/toolCategories";
 import { useState } from "react";
-import { automations } from "@/data/tools";
+import { automations } from "@/data/automations";
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
