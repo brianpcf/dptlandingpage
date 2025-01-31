@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import AutomationCard from "@/components/AutomationCard";
+import FeaturedAutomations from "@/components/FeaturedAutomations";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toolCategories } from "@/data/toolCategories";
 import { useState } from "react";
@@ -21,10 +22,15 @@ const Index = () => {
     return false;
   });
 
+  const featuredAutomations = automations.slice(0, 3);
+  const remainingAutomations = filteredAutomations.slice(3);
+
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <Hero />
       <div className="max-w-7xl mx-auto">
+        <FeaturedAutomations automations={featuredAutomations} />
+        
         <div className="mb-8 space-y-4">
           <Select onValueChange={setSelectedCategory} value={selectedCategory}>
             <SelectTrigger className="w-[280px]">
@@ -70,7 +76,7 @@ const Index = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredAutomations.map((automation, index) => (
+          {remainingAutomations.map((automation, index) => (
             <AutomationCard key={index} {...automation} />
           ))}
         </div>
