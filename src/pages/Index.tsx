@@ -5,6 +5,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { toolCategories } from "@/data/toolCategories";
 import { useState } from "react";
 import { automations } from "@/data/automations";
+import ChatBot from "@/components/ChatBot";
 
 const Index = () => {
   const [selectedTools, setSelectedTools] = useState<string[]>([]);
@@ -95,6 +96,7 @@ const Index = () => {
           ))}
         </div>
       </div>
+      <ChatBot />
     </div>
   );
 };
