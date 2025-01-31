@@ -11,9 +11,14 @@ import {
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const handleEmailSupport = () => {
     window.location.href = "mailto:automation@getsagan.com";
+  };
+
+  const handleBack = () => {
+    setSelectedOption(null);
   };
 
   return (
@@ -33,49 +38,82 @@ const ChatBot = () => {
             <DialogTitle>Need help?</DialogTitle>
           </DialogHeader>
           <div className="flex flex-col gap-4 mt-4">
-            <Button
-              variant="outline"
-              className="justify-start text-left h-auto py-4"
-              onClick={() => {
-                setIsOpen(false);
-              }}
-            >
-              <div>
-                <div className="font-semibold">How does this work?</div>
-                <div className="text-sm text-muted-foreground mt-1">
-                  You can select an individual automation or use our "Filter by Tools" to find the automations that may be most helpful to you with your existing tech stack.
-                </div>
+            {!selectedOption ? (
+              <>
+                <Button
+                  variant="outline"
+                  className="justify-start text-left h-auto py-4"
+                  onClick={() => setSelectedOption("how-it-works")}
+                >
+                  <div>
+                    <div className="font-semibold">How does this work?</div>
+                  </div>
+                </Button>
+                
+                <Button
+                  variant="outline"
+                  className="justify-start text-left h-auto py-4"
+                  onClick={() => setSelectedOption("help-choose")}
+                >
+                  <div>
+                    <div className="font-semibold">Can you help me choose?</div>
+                  </div>
+                </Button>
+                
+                <Button
+                  variant="outline"
+                  className="justify-start text-left h-auto py-4"
+                  onClick={() => setSelectedOption("email-support")}
+                >
+                  <div>
+                    <div className="font-semibold">Email support</div>
+                  </div>
+                </Button>
+              </>
+            ) : (
+              <div className="space-y-4">
+                {selectedOption === "how-it-works" && (
+                  <div className="text-sm">
+                    You can select an individual automation or use our "Filter by Tools" to find the automations that may be most helpful to you with your existing tech stack.
+                  </div>
+                )}
+                
+                {selectedOption === "help-choose" && (
+                  <div className="space-y-4">
+                    <div className="text-sm">
+                      Use our pathfinder tool to find the perfect automation for your needs.
+                    </div>
+                    <Button 
+                      onClick={() => {
+                        window.open("https://saganpathfinder.replit.app/", "_blank");
+                        setIsOpen(false);
+                      }}
+                    >
+                      Open Pathfinder Tool
+                    </Button>
+                  </div>
+                )}
+                
+                {selectedOption === "email-support" && (
+                  <div className="space-y-4">
+                    <div className="text-sm">
+                      Get in touch with our support team via email.
+                    </div>
+                    <Button onClick={handleEmailSupport}>
+                      Send Email
+                    </Button>
+                  </div>
+                )}
+                
+                <Button
+                  variant="outline"
+                  onClick={handleBack}
+                  className="w-full"
+                >
+                  Back to options
+                </Button>
               </div>
-            </Button>
-            
-            <Button
-              variant="outline"
-              className="justify-start text-left h-auto py-4"
-              onClick={() => {
-                window.open("https://saganpathfinder.replit.app/", "_blank");
-                setIsOpen(false);
-              }}
-            >
-              <div>
-                <div className="font-semibold">Can you help me choose?</div>
-                <div className="text-sm text-muted-foreground mt-1">
-                  Use our pathfinder tool to find the perfect automation for your needs.
-                </div>
-              </div>
-            </Button>
-            
-            <Button
-              variant="outline"
-              className="justify-start text-left h-auto py-4"
-              onClick={handleEmailSupport}
-            >
-              <div>
-                <div className="font-semibold">Email support</div>
-                <div className="text-sm text-muted-foreground mt-1">
-                  Get in touch with our support team via email.
-                </div>
-              </div>
-            </Button>
+            )}
           </div>
         </DialogContent>
       </Dialog>
