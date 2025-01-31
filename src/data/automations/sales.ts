@@ -9,7 +9,7 @@ export const salesAutomations: Automation[] = [
     iconBg: "bg-indigo-100",
     link: "/call-coach",
     category: "Sales",
-    tools: ["Gong.io", "HubSpot", "Slack"]
+    tools: ["VoIP Phone", "Google Sheets"]
   },
   {
     title: "Road Recap",
