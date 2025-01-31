@@ -2,9 +2,9 @@ import {
   Mail, Calendar, Users, MessageSquare, FileText, 
   PhoneCall, Database, List, AlertCircle, FileCheck,
   BarChart2, Share2, Bell, FolderKanban, DollarSign,
-  UserPlus, Briefcase, CalendarCheck, FolderInput, MessageCircle
+  UserPlus, Briefcase, CalendarCheck, FolderInput, MessageCircle,
+  LucideIcon
 } from "lucide-react";
-import { ReactNode } from "react";
 
 export interface Tool {
   name: string;
@@ -14,6 +14,16 @@ export interface Tool {
 export interface ToolCategory {
   name: string;
   tools: Tool[];
+}
+
+export interface Automation {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+  iconBg: string;
+  link: string;
+  category: string;
+  tools: string[];
 }
 
 export const toolCategories: ToolCategory[] = [
@@ -132,16 +142,6 @@ export const toolCategories: ToolCategory[] = [
     ]
   }
 ];
-
-export interface Automation {
-  title: string;
-  description: string;
-  icon: ReactNode;
-  iconBg: string;
-  link: string;
-  category: string;
-  tools: string[];
-}
 
 export const automations: Automation[] = [
   {

@@ -48,33 +48,6 @@ export const salesAutomations: Automation[] = [
     tools: ["HubSpot", "Gmail", "Slack"]
   },
   {
-    title: "Call Coach",
-    description: "Use AI to set and collect performance metrics for sales and customer service calls.",
-    icon: PhoneCall,
-    iconBg: "bg-indigo-100",
-    link: "/call-coach",
-    category: "Sales",
-    tools: ["Gong.io", "HubSpot", "Slack"]
-  },
-  {
-    title: "Road Recap",
-    description: "Your AI CRM. Set your questions, call in and talk to your custom AI ChatBot, and get a record for your CRM.",
-    icon: Users,
-    iconBg: "bg-rose-100",
-    link: "/road-recap",
-    category: "Sales",
-    tools: ["HubSpot", "Fireflies.ai", "Slack"]
-  },
-  {
-    title: "Agenda AI",
-    description: "An AI ChatBot that can answer questions about clients, internal processes, and connected systems.",
-    icon: Users,
-    iconBg: "bg-amber-100",
-    link: "/agenda-ai",
-    category: "Communication",
-    tools: ["Slack", "HubSpot", "Notion"]
-  },
-  {
     title: "Smart Lead Qualification",
     description: "AI-powered lead scoring and routing system that analyzes incoming leads and assigns them to the right sales rep.",
     icon: Users,
