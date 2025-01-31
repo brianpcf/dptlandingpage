@@ -1,6 +1,9 @@
 import { Mail, Calendar, Users, MessageSquare, FileText, PhoneCall, Database, List } from "lucide-react";
 import Hero from "@/components/Hero";
 import AutomationCard from "@/components/AutomationCard";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { toolCategories } from "@/data/tools";
+import { useState } from "react";
 
 const automations = [
   {
@@ -62,10 +65,51 @@ const automations = [
 ];
 
 const Index = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
+
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <Hero />
       <div className="max-w-7xl mx-auto">
+        <div className="mb-8">
+          <Select onValueChange={setSelectedCategory} value={selectedCategory}>
+            <SelectTrigger className="w-[280px]">
+              <SelectValue placeholder="Select tools category" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Tool Categories</SelectLabel>
+                {toolCategories.map((category) => (
+                  <SelectItem key={category.name} value={category.name}>
+                    {category.name}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+          {selectedCategory && (
+            <div className="mt-4">
+              <h3 className="text-lg font-semibold mb-2">Available Tools:</h3>
+              <div className="flex flex-wrap gap-2">
+                {toolCategories
+                  .find((cat) => cat.name === selectedCategory)
+                  ?.tools.map((tool) => (
+                    <span
+                      key={tool.name}
+                      className={`px-3 py-1 rounded-full text-sm ${
+                        tool.isPriority
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-secondary text-secondary-foreground"
+                      }`}
+                    >
+                      {tool.name}
+                      {tool.isPriority && " *"}
+                    </span>
+                  ))}
+              </div>
+            </div>
+          )}
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {automations.map((automation, index) => (
             <AutomationCard key={index} {...automation} />
