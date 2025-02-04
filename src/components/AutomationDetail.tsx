@@ -201,7 +201,7 @@ const AutomationDetail = () => {
                   <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                     <Icon className="w-6 h-6 text-primary" aria-hidden="true" />
                   </div>
-                  <div className="flex-grow pt-2">
+                  <div className="flex-grow flex flex-col justify-center min-h-[48px]">
                     <h3 className="font-medium text-lg leading-6">{step.title}</h3>
                     <p className="text-sm text-muted-foreground mt-1">
                       {step.description}
