@@ -2,118 +2,143 @@ import { ArrowLeft } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { automations } from "@/data/automations";
 import { Card } from "./ui/card";
+import { Rss, MessageSquare, Mail, Terminal } from "lucide-react";
 
 const workflowSteps = {
   "email-triage": [
     {
       title: "Email Reception",
-      description: "New customer email arrives in Gmail inbox"
+      description: "New customer email arrives in Gmail inbox",
+      icon: Mail
     },
     {
       title: "AI Analysis",
-      description: "AI analyzes email content and sentiment to determine priority"
+      description: "AI analyzes email content and sentiment to determine priority",
+      icon: Terminal
     },
     {
       title: "Route & Notify",
-      description: "Email is routed to appropriate Slack channel and CRM is updated"
+      description: "Email is routed to appropriate Slack channel and CRM is updated",
+      icon: MessageSquare
     }
   ],
   "meeting-followup": [
     {
       title: "Meeting Ends",
-      description: "Calendar event concludes"
+      description: "Calendar event concludes",
+      icon: Rss
     },
     {
       title: "Generate Summary",
-      description: "AI creates detailed meeting summary and action items"
+      description: "AI creates detailed meeting summary and action items",
+      icon: Terminal
     },
     {
       title: "Update Systems",
-      description: "CRM is updated and follow-up emails are drafted"
+      description: "CRM is updated and follow-up emails are drafted",
+      icon: MessageSquare
     }
   ],
   "lead-qualification": [
     {
       title: "Lead Entry",
-      description: "New lead information is received"
+      description: "New lead information is received",
+      icon: Rss
     },
     {
       title: "AI Scoring",
-      description: "AI analyzes lead data against qualification criteria"
+      description: "AI analyzes lead data against qualification criteria",
+      icon: Terminal
     },
     {
       title: "Team Assignment",
-      description: "Qualified leads are assigned to sales team with notifications"
+      description: "Qualified leads are assigned to sales team with notifications",
+      icon: MessageSquare
     }
   ],
   "support-escalation": [
     {
       title: "Issue Detection",
-      description: "Support ticket is flagged for escalation"
+      description: "Support ticket is flagged for escalation",
+      icon: Rss
     },
     {
       title: "Analysis",
-      description: "AI analyzes issue severity and required expertise"
+      description: "AI analyzes issue severity and required expertise",
+      icon: Terminal
     },
     {
       title: "Route & Resolve",
-      description: "Issue is routed to appropriate team with context"
+      description: "Issue is routed to appropriate team with context",
+      icon: MessageSquare
     }
   ],
   "quote-automation": [
     {
       title: "Request Receipt",
-      description: "Quote request received from customer"
+      description: "Quote request received from customer",
+      icon: Rss
     },
     {
       title: "Data Collection",
-      description: "System gathers necessary pricing and product information"
+      description: "System gathers necessary pricing and product information",
+      icon: Terminal
     },
     {
       title: "Generate & Send",
-      description: "Personalized quote is created and sent to customer"
+      description: "Personalized quote is created and sent to customer",
+      icon: MessageSquare
     }
   ],
   "call-coach": [
     {
       title: "Call Recording",
-      description: "Customer call is recorded and transcribed"
+      description: "Customer call is recorded and transcribed",
+      icon: Rss
     },
     {
       title: "AI Analysis",
-      description: "AI analyzes call against performance metrics"
+      description: "AI analyzes call against performance metrics",
+      icon: Terminal
     },
     {
       title: "Report Generation",
-      description: "Detailed performance report is generated and shared"
+      description: "Detailed performance report is generated and shared",
+      icon: MessageSquare
     }
   ],
   "road-recap": [
     {
       title: "Voice Input",
-      description: "Sales rep calls in with updates"
+      description: "Sales rep calls in with updates",
+      icon: Rss
     },
     {
       title: "AI Processing",
-      description: "AI ChatBot processes conversation and extracts key information"
+      description: "AI ChatBot processes conversation and extracts key information",
+      icon: Terminal
     },
     {
       title: "CRM Update",
-      description: "Information is structured and added to CRM"
+      description: "Information is structured and added to CRM",
+      icon: MessageSquare
     }
   ],
   "agenda-ai": [
     {
       title: "Query Receipt",
-      description: "User asks question to AI ChatBot"
+      description: "User asks question to AI ChatBot",
+      icon: Rss
     },
     {
       title: "Context Gathering",
-      description: "AI accesses connected systems for relevant information"
+      description: "AI accesses connected systems for relevant information",
+      icon: Terminal
     },
     {
       title: "Response Generation",
-      description: "Contextual answer is generated and delivered"
+      description: "Contextual answer is generated and delivered",
+      icon: MessageSquare
     }
   ]
 };
@@ -129,15 +154,18 @@ const AutomationDetail = () => {
   const steps = workflowSteps[id as keyof typeof workflowSteps] || [
     {
       title: "Trigger",
-      description: "Automation is triggered by specific event"
+      description: "Automation is triggered by specific event",
+      icon: Rss
     },
     {
       title: "Process",
-      description: "System processes the incoming data"
+      description: "System processes the incoming data",
+      icon: Terminal
     },
     {
       title: "Output",
-      description: "Results are delivered to specified channels"
+      description: "Results are delivered to specified channels",
+      icon: MessageSquare
     }
   ];
 
@@ -157,21 +185,27 @@ const AutomationDetail = () => {
         </div>
 
         <Card className="p-6 mb-8">
-          <h2 className="text-xl font-semibold mb-4">Steps in this workflow</h2>
-          <div className="space-y-4">
-            {steps.map((step, index) => (
-              <div key={index} className="flex items-center space-x-4">
-                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                  {index + 1}
+          <h2 className="text-xl font-semibold mb-6">Steps in this workflow</h2>
+          <div className="space-y-6">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              return (
+                <div key={index} className="flex items-start space-x-4 relative">
+                  {index !== steps.length - 1 && (
+                    <div className="absolute left-6 top-12 w-0.5 h-16 bg-gray-200" />
+                  )}
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <div className="flex-grow pt-2">
+                    <h3 className="font-medium text-lg">{step.title}</h3>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-medium">{step.title}</h3>
-                  <p className="text-sm text-muted-foreground">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </Card>
 
