@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "./ui/card";
 import { LucideIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface AutomationCardProps {
   title: string;
@@ -43,12 +44,12 @@ const AutomationCard = ({
             ))}
           </div>
         )}
-        <a 
-          href={link} 
+        <Link 
+          to={link.replace("/", "")} 
           className="inline-flex items-center text-sm font-medium text-primary hover:underline"
         >
           Learn More <ArrowRight className="w-4 h-4 ml-1" />
-        </a>
+        </Link>
       </CardContent>
     </Card>
   );
