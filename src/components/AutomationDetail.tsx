@@ -1,12 +1,13 @@
 import { ArrowLeft } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { automations } from "@/data/automations";
-import { Card } from "./ui/card";
 import { 
   Mail, FileText, MessageSquare, Terminal, Calendar, 
   Users, AlertCircle, DollarSign, PhoneCall, Database,
   List, BrainCircuit, Bot, Workflow
 } from "lucide-react";
+import WorkflowSteps from "./workflow/WorkflowSteps";
+import IntegrationDetails from "./integration/IntegrationDetails";
 
 const workflowSteps = {
   "email-triage": [
@@ -188,50 +189,8 @@ const AutomationDetail = () => {
           <p className="text-lg text-muted-foreground">{automation.description}</p>
         </div>
 
-        <Card className="p-6 mb-8">
-          <h2 className="text-xl font-semibold mb-6">Steps in this workflow</h2>
-          <div className="space-y-6">
-            {steps.map((step, index) => {
-              const Icon = step.icon;
-              return (
-                <div key={index} className="flex items-start space-x-4 relative">
-                  {index !== steps.length - 1 && (
-                    <div className="absolute left-6 top-12 w-0.5 h-16 bg-gray-200" />
-                  )}
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Icon className="w-6 h-6 text-primary" aria-hidden="true" />
-                  </div>
-                  <div className="flex min-h-[48px] flex-grow">
-                    <div className="flex flex-col justify-center w-full">
-                      <h3 className="font-medium text-lg leading-6">{step.title}</h3>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        {step.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </Card>
-
-        <Card className="p-6">
-          <h2 className="text-xl font-semibold mb-4">Integration Details</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="font-medium mb-2">Required Tools</h3>
-              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                {automation.tools.map((tool) => (
-                  <li key={tool}>{tool}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-medium mb-2">Category</h3>
-              <p className="text-muted-foreground">{automation.category}</p>
-            </div>
-          </div>
-        </Card>
+        <WorkflowSteps steps={steps} />
+        <IntegrationDetails tools={automation.tools} category={automation.category} />
       </div>
     </div>
   );
