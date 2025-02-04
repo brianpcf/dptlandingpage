@@ -1,18 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "./ui/card";
 import { LucideIcon } from "lucide-react";
-import { 
-  Mail, 
-  MessageSquare, 
-  Calendar, 
-  FileText, 
-  Users,
-  Database,
-  Slack,
-  BellRing,
-  FileSpreadsheet,
-  MessageCircle
-} from "lucide-react";
 
 interface AutomationCardProps {
   title: string;
@@ -23,23 +11,6 @@ interface AutomationCardProps {
   tools?: string[];
   category?: string;
 }
-
-// Helper function to map tool names to icons
-const getToolIcon = (toolName: string): LucideIcon => {
-  const iconMap: { [key: string]: LucideIcon } = {
-    "Gmail": Mail,
-    "Slack": MessageSquare,
-    "Google Calendar": Calendar,
-    "HubSpot": Database,
-    "Google Sheets": FileSpreadsheet,
-    "Zendesk": MessageCircle,
-    "Google Drive": FileText,
-    "Fireflies.ai": BellRing,
-    "Notion": FileText
-  };
-
-  return iconMap[toolName] || Database; // Default to Database icon if no match
-};
 
 const AutomationCard = ({ 
   title, 
@@ -62,18 +33,14 @@ const AutomationCard = ({
       <CardContent>
         {tools.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-4">
-            {tools.map((tool) => {
-              const ToolIcon = getToolIcon(tool);
-              return (
-                <div
-                  key={tool}
-                  className="p-1.5 bg-muted rounded-full hover:bg-muted/80 transition-colors"
-                  title={tool}
-                >
-                  <ToolIcon className="w-4 h-4 text-muted-foreground" />
-                </div>
-              );
-            })}
+            {tools.map((tool) => (
+              <span
+                key={tool}
+                className="px-2 py-1 bg-muted text-muted-foreground rounded-full text-xs"
+              >
+                {tool}
+              </span>
+            ))}
           </div>
         )}
         <a 
