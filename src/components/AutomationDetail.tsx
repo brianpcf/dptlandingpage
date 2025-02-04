@@ -2,7 +2,11 @@ import { ArrowLeft } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { automations } from "@/data/automations";
 import { Card } from "./ui/card";
-import { Rss, MessageSquare, Mail, Terminal } from "lucide-react";
+import { 
+  Mail, FileText, MessageSquare, Terminal, Calendar, 
+  Users, AlertCircle, DollarSign, PhoneCall, Database,
+  List, BrainCircuit, Bot, Workflow
+} from "lucide-react";
 
 const workflowSteps = {
   "email-triage": [
@@ -14,7 +18,7 @@ const workflowSteps = {
     {
       title: "AI Analysis",
       description: "AI analyzes email content and sentiment to determine priority",
-      icon: Terminal
+      icon: BrainCircuit
     },
     {
       title: "Route & Notify",
@@ -26,29 +30,29 @@ const workflowSteps = {
     {
       title: "Meeting Ends",
       description: "Calendar event concludes",
-      icon: Rss
+      icon: Calendar
     },
     {
       title: "Generate Summary",
       description: "AI creates detailed meeting summary and action items",
-      icon: Terminal
+      icon: FileText
     },
     {
       title: "Update Systems",
       description: "CRM is updated and follow-up emails are drafted",
-      icon: MessageSquare
+      icon: Database
     }
   ],
   "lead-qualification": [
     {
       title: "Lead Entry",
       description: "New lead information is received",
-      icon: Rss
+      icon: Users
     },
     {
       title: "AI Scoring",
       description: "AI analyzes lead data against qualification criteria",
-      icon: Terminal
+      icon: BrainCircuit
     },
     {
       title: "Team Assignment",
@@ -60,12 +64,12 @@ const workflowSteps = {
     {
       title: "Issue Detection",
       description: "Support ticket is flagged for escalation",
-      icon: Rss
+      icon: AlertCircle
     },
     {
       title: "Analysis",
       description: "AI analyzes issue severity and required expertise",
-      icon: Terminal
+      icon: BrainCircuit
     },
     {
       title: "Route & Resolve",
@@ -77,68 +81,68 @@ const workflowSteps = {
     {
       title: "Request Receipt",
       description: "Quote request received from customer",
-      icon: Rss
+      icon: FileText
     },
     {
       title: "Data Collection",
       description: "System gathers necessary pricing and product information",
-      icon: Terminal
+      icon: Database
     },
     {
       title: "Generate & Send",
       description: "Personalized quote is created and sent to customer",
-      icon: MessageSquare
+      icon: DollarSign
     }
   ],
   "call-coach": [
     {
       title: "Call Recording",
       description: "Customer call is recorded and transcribed",
-      icon: Rss
+      icon: PhoneCall
     },
     {
       title: "AI Analysis",
       description: "AI analyzes call against performance metrics",
-      icon: Terminal
+      icon: BrainCircuit
     },
     {
       title: "Report Generation",
       description: "Detailed performance report is generated and shared",
-      icon: MessageSquare
+      icon: FileText
     }
   ],
   "road-recap": [
     {
       title: "Voice Input",
       description: "Sales rep calls in with updates",
-      icon: Rss
+      icon: PhoneCall
     },
     {
       title: "AI Processing",
       description: "AI ChatBot processes conversation and extracts key information",
-      icon: Terminal
+      icon: Bot
     },
     {
       title: "CRM Update",
       description: "Information is structured and added to CRM",
-      icon: MessageSquare
+      icon: Database
     }
   ],
   "agenda-ai": [
     {
       title: "Query Receipt",
       description: "User asks question to AI ChatBot",
-      icon: Rss
+      icon: MessageSquare
     },
     {
       title: "Context Gathering",
       description: "AI accesses connected systems for relevant information",
-      icon: Terminal
+      icon: Database
     },
     {
       title: "Response Generation",
       description: "Contextual answer is generated and delivered",
-      icon: MessageSquare
+      icon: Bot
     }
   ]
 };
@@ -155,7 +159,7 @@ const AutomationDetail = () => {
     {
       title: "Trigger",
       description: "Automation is triggered by specific event",
-      icon: Rss
+      icon: Workflow
     },
     {
       title: "Process",
@@ -197,7 +201,7 @@ const AutomationDetail = () => {
                   <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                     <Icon className="w-6 h-6 text-primary" aria-hidden="true" />
                   </div>
-                  <div className="flex-grow pt-2.5">
+                  <div className="flex-grow pt-2">
                     <h3 className="font-medium text-lg leading-6">{step.title}</h3>
                     <p className="text-sm text-muted-foreground mt-1">
                       {step.description}
