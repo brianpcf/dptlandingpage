@@ -9,9 +9,9 @@ interface WorkflowStepProps {
 
 const WorkflowStep = ({ title, description, icon: Icon, isLast }: WorkflowStepProps) => {
   return (
-    <div className={`flex items-start space-x-4 relative ${isLast ? 'pl-6' : ''}`}>
+    <div className="flex items-start space-x-4 relative">
       {!isLast && (
-        <div className="absolute left-12 top-12 w-0.5 h-16 bg-gray-200" />
+        <div className="absolute left-6 top-12 w-0.5 h-16 bg-gray-200" />
       )}
       <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
         <Icon className="w-6 h-6 text-primary" aria-hidden="true" />
