@@ -3,13 +3,143 @@ import { Link, useParams } from "react-router-dom";
 import { automations } from "@/data/automations";
 import { Card } from "./ui/card";
 
+const workflowSteps = {
+  "email-triage": [
+    {
+      title: "Email Reception",
+      description: "New customer email arrives in Gmail inbox"
+    },
+    {
+      title: "AI Analysis",
+      description: "AI analyzes email content and sentiment to determine priority"
+    },
+    {
+      title: "Route & Notify",
+      description: "Email is routed to appropriate Slack channel and CRM is updated"
+    }
+  ],
+  "meeting-followup": [
+    {
+      title: "Meeting Ends",
+      description: "Calendar event concludes"
+    },
+    {
+      title: "Generate Summary",
+      description: "AI creates detailed meeting summary and action items"
+    },
+    {
+      title: "Update Systems",
+      description: "CRM is updated and follow-up emails are drafted"
+    }
+  ],
+  "lead-qualification": [
+    {
+      title: "Lead Entry",
+      description: "New lead information is received"
+    },
+    {
+      title: "AI Scoring",
+      description: "AI analyzes lead data against qualification criteria"
+    },
+    {
+      title: "Team Assignment",
+      description: "Qualified leads are assigned to sales team with notifications"
+    }
+  ],
+  "support-escalation": [
+    {
+      title: "Issue Detection",
+      description: "Support ticket is flagged for escalation"
+    },
+    {
+      title: "Analysis",
+      description: "AI analyzes issue severity and required expertise"
+    },
+    {
+      title: "Route & Resolve",
+      description: "Issue is routed to appropriate team with context"
+    }
+  ],
+  "quote-automation": [
+    {
+      title: "Request Receipt",
+      description: "Quote request received from customer"
+    },
+    {
+      title: "Data Collection",
+      description: "System gathers necessary pricing and product information"
+    },
+    {
+      title: "Generate & Send",
+      description: "Personalized quote is created and sent to customer"
+    }
+  ],
+  "call-coach": [
+    {
+      title: "Call Recording",
+      description: "Customer call is recorded and transcribed"
+    },
+    {
+      title: "AI Analysis",
+      description: "AI analyzes call against performance metrics"
+    },
+    {
+      title: "Report Generation",
+      description: "Detailed performance report is generated and shared"
+    }
+  ],
+  "road-recap": [
+    {
+      title: "Voice Input",
+      description: "Sales rep calls in with updates"
+    },
+    {
+      title: "AI Processing",
+      description: "AI ChatBot processes conversation and extracts key information"
+    },
+    {
+      title: "CRM Update",
+      description: "Information is structured and added to CRM"
+    }
+  ],
+  "agenda-ai": [
+    {
+      title: "Query Receipt",
+      description: "User asks question to AI ChatBot"
+    },
+    {
+      title: "Context Gathering",
+      description: "AI accesses connected systems for relevant information"
+    },
+    {
+      title: "Response Generation",
+      description: "Contextual answer is generated and delivered"
+    }
+  ]
+};
+
 const AutomationDetail = () => {
   const { id } = useParams();
   const automation = automations.find(a => a.link.replace("/", "") === id);
-
+  
   if (!automation) {
     return <div>Automation not found</div>;
   }
+
+  const steps = workflowSteps[id as keyof typeof workflowSteps] || [
+    {
+      title: "Trigger",
+      description: "Automation is triggered by specific event"
+    },
+    {
+      title: "Process",
+      description: "System processes the incoming data"
+    },
+    {
+      title: "Output",
+      description: "Results are delivered to specified channels"
+    }
+  ];
 
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
@@ -29,39 +159,19 @@ const AutomationDetail = () => {
         <Card className="p-6 mb-8">
           <h2 className="text-xl font-semibold mb-4">Steps in this workflow</h2>
           <div className="space-y-4">
-            <div className="flex items-center space-x-4">
-              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                1
+            {steps.map((step, index) => (
+              <div key={index} className="flex items-center space-x-4">
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                  {index + 1}
+                </div>
+                <div>
+                  <h3 className="font-medium">{step.title}</h3>
+                  <p className="text-sm text-muted-foreground">
+                    {step.description}
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-medium">Trigger</h3>
-                <p className="text-sm text-muted-foreground">
-                  Every time a new customer call is recorded
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                2
-              </div>
-              <div>
-                <h3 className="font-medium">Process</h3>
-                <p className="text-sm text-muted-foreground">
-                  AI analyzes call transcript and extracts key insights
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                3
-              </div>
-              <div>
-                <h3 className="font-medium">Output</h3>
-                <p className="text-sm text-muted-foreground">
-                  Generates structured report and sends to specified channels
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </Card>
 
