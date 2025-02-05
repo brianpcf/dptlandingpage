@@ -56,7 +56,7 @@ const AutomationCard = ({
             Learn More <ArrowRight className="w-4 h-4 ml-1" />
           </Link>
           <Button 
-            onClick={() => addToCart({ title, description, icon, iconBg, link, tools, category })}
+            onClick={() => addToCart({ title, description, Icon, iconBg, link, tools, category })}
             variant="default"
           >
             Get This Tool
