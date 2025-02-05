@@ -8,17 +8,27 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [email, setEmail] = useState("");
+  const [question, setQuestion] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleEmailSupport = () => {
-    window.location.href = "mailto:automation@getsagan.com";
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+    // Reset form
+    setEmail("");
+    setQuestion("");
   };
 
   const handleBack = () => {
     setSelectedOption(null);
+    setIsSubmitted(false);
   };
 
   return (
@@ -96,12 +106,35 @@ const ChatBot = () => {
                 
                 {selectedOption === "email-support" && (
                   <div className="space-y-4">
-                    <div className="text-sm">
-                      Get in touch with our support team via email.
-                    </div>
-                    <Button onClick={handleEmailSupport}>
-                      Send Email
-                    </Button>
+                    {!isSubmitted ? (
+                      <form onSubmit={handleSubmit} className="space-y-4">
+                        <div>
+                          <Input
+                            type="email"
+                            placeholder="Your email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <Textarea
+                            placeholder="Your question"
+                            value={question}
+                            onChange={(e) => setQuestion(e.target.value)}
+                            required
+                            className="min-h-[100px]"
+                          />
+                        </div>
+                        <Button type="submit" className="w-full">
+                          Submit
+                        </Button>
+                      </form>
+                    ) : (
+                      <div className="text-sm text-center py-4">
+                        Thank you for contacting us! A member of our customer support team will be in touch shortly.
+                      </div>
+                    )}
                   </div>
                 )}
                 
