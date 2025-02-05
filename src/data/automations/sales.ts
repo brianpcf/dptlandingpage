@@ -57,7 +57,7 @@ export const salesAutomations: Automation[] = [
     tools: ["Gmail", "HubSpot", "Slack"]
   },
   {
-    title: "Automated Sales Meeting Follow-up",
+    title: "AI Sales Meeting Follow-up",
     description: "Transcribes sales calls, generates summaries, updates CRM, and schedules follow-ups automatically.",
     icon: Calendar,
     iconBg: "bg-violet-100",

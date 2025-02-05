@@ -216,7 +216,6 @@ export const automations: Automation[] = [
     category: "Communication",
     tools: ["Slack", "HubSpot", "Notion"]
   },
-  // New Sales & Lead Management Automations
   {
     title: "Smart Lead Qualification",
     description: "AI-powered lead scoring and routing system that analyzes incoming leads and assigns them to the right sales rep.",
@@ -227,7 +226,7 @@ export const automations: Automation[] = [
     tools: ["Gmail", "HubSpot", "Slack"]
   },
   {
-    title: "Automated Sales Meeting Follow-up",
+    title: "AI Sales Meeting Follow-up",
     description: "Transcribes sales calls, generates summaries, updates CRM, and schedules follow-ups automatically.",
     icon: Calendar,
     iconBg: "bg-violet-100",
@@ -235,7 +234,6 @@ export const automations: Automation[] = [
     category: "Sales",
     tools: ["Fireflies.ai", "HubSpot", "Gmail", "Google Calendar"]
   },
-  // ... Adding remaining automations with appropriate icons
   {
     title: "Pipeline Progress Notifications",
     description: "Alerts teams in Slack when deals move stages, with AI-generated next step recommendations.",
