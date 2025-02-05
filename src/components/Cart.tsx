@@ -62,6 +62,12 @@ export function Cart() {
                 will provide you additional details on monthly fees once your digital power 
                 tool build is complete.
               </p>
+              <p className="text-xs text-muted-foreground mt-4 text-center">
+                By checking this box, you expressly authorize Sagan World LLC to charge the credit card we have on file for you for this service.
+              </p>
+              <p className="text-xs text-muted-foreground mt-2 text-center">
+                You acknowledge and agree that this charge is non-refundable and that you will not dispute or initiate a chargeback for this transaction. If you have any concerns regarding this charge, you agree to contact us first to seek resolution before initiating a dispute with your card issuer.
+              </p>
             </div>
           )}
         </div>
