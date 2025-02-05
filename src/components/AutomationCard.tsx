@@ -1,7 +1,9 @@
 import { ArrowRight } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "./ui/card";
+import { Button } from "./ui/button";
 import { LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useCart } from "@/contexts/CartContext";
 
 interface AutomationCardProps {
   title: string;
@@ -22,6 +24,8 @@ const AutomationCard = ({
   tools = [],
   category 
 }: AutomationCardProps) => {
+  const { addToCart } = useCart();
+
   return (
     <Card className="automation-card hover:shadow-lg transition-shadow duration-200">
       <CardHeader>
@@ -44,12 +48,20 @@ const AutomationCard = ({
             ))}
           </div>
         )}
-        <Link 
-          to={link.replace("/", "")} 
-          className="inline-flex items-center text-sm font-medium text-primary hover:underline"
-        >
-          Learn More <ArrowRight className="w-4 h-4 ml-1" />
-        </Link>
+        <div className="flex items-center justify-between mt-4">
+          <Link 
+            to={link.replace("/", "")} 
+            className="inline-flex items-center text-sm font-medium text-primary hover:underline"
+          >
+            Learn More <ArrowRight className="w-4 h-4 ml-1" />
+          </Link>
+          <Button 
+            onClick={() => addToCart({ title, description, icon, iconBg, link, tools, category })}
+            variant="default"
+          >
+            Get This Tool
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );
