@@ -74,7 +74,7 @@ const ChatBot = () => {
               <div className="space-y-4">
                 {selectedOption === "how-it-works" && (
                   <div className="text-sm">
-                    You can select an individual automation or use our "Filter by Tools" to find the automations that may be most helpful to you with your existing tech stack.
+                    You can select individual automations or use our "Filter by Tools" to find automations that may be most helpful to you with your existing tech stack.
                   </div>
                 )}
                 
