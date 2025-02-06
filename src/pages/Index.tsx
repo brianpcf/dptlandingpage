@@ -7,12 +7,8 @@ import { toolCategories } from "@/data/toolCategories";
 import { useState } from "react";
 import { automations } from "@/data/automations";
 import ChatBot from "@/components/ChatBot";
-import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
 
 const Index = () => {
-  const { toast } = useToast();
   const [selectedTools, setSelectedTools] = useState<string[]>([]);
   const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
 
@@ -43,46 +39,6 @@ const Index = () => {
     ? filteredAutomations.filter(automation => !featuredAutomations.includes(automation))
     : filteredAutomations.slice(3);
 
-  const handleDownload = () => {
-    try {
-      // Create data object with all relevant information
-      const data = {
-        toolCategories,
-        automations,
-        featuredAutomations,
-        timestamp: new Date().toISOString()
-      };
-
-      // Convert to JSON string
-      const jsonString = JSON.stringify(data, null, 2);
-
-      // Create blob and download
-      const blob = new Blob([jsonString], { type: 'application/json' });
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = 'automations-data.json';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
-
-      toast({
-        title: "Success",
-        description: "Data downloaded successfully",
-        duration: 3000,
-      });
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to download data",
-        variant: "destructive",
-        duration: 3000,
-      });
-      console.error('Download error:', error);
-    }
-  };
-
   console.log('Selected Tools:', selectedTools);
   console.log('Filtered Automations:', filteredAutomations);
 
@@ -90,17 +46,7 @@ const Index = () => {
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <Hero />
       <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl font-bold">Featured Automations</h2>
-          <Button
-            onClick={handleDownload}
-            variant="outline"
-            className="flex items-center gap-2"
-          >
-            <Download className="h-4 w-4" />
-            Download Data
-          </Button>
-        </div>
+        <h2 className="text-2xl font-bold mb-8">Featured Automations</h2>
         
         <FeaturedAutomations automations={featuredAutomations} />
         
@@ -159,4 +105,3 @@ const Index = () => {
 };
 
 export default Index;
-
